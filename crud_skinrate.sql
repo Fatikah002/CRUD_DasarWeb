@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 25, 2024 at 05:29 AM
+-- Generation Time: Oct 25, 2024 at 05:45 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -30,8 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `produk` (
   `id_produk` varchar(15) NOT NULL,
   `gambar_produk` blob NOT NULL,
-  `nama_produk` varchar(50) NOT NULL,
-  'deskripsi_produk' varchar (100)
+  `nama_produk` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
 
