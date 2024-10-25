@@ -31,7 +31,7 @@ CREATE TABLE `produk` (
   `id_produk` varchar(15) NOT NULL,
   `gambar_produk` blob NOT NULL,
   `nama_produk` varchar(50) NOT NULL,
-  'deskripsi_produk' varchar(100)
+  `deskripsi_produk` varchar(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
 
