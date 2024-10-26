@@ -12,7 +12,7 @@ if ($result->num_rows > 0) {
     $_SESSION['username'] = $username;
     header("Location: dashboard.php");
 } else {
-    echo "Login gagal. <a href='index.php'>Login Gagal!</a>";
+    echo "Login gagal! <a href='index.php'><br> Silakan login kembali</a>";
 }
 
 $koneksi->close();
