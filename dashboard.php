@@ -45,13 +45,13 @@ require('koneksi.php');
                         
                         <td><?= $data['id_barang'] ?></td>
                         <td><?= $data['gambar_barang'] ?></td>
-                        <td><?= $data['nama_barang'] ?></td>
+                       <td><img src="img/<?= $data['gambar_barang'] ?>" width="70" height="90" alt="Gambar Produk"></td> 
                         <td><?= $data['fk_id_kategori'] ?></td>
                         <td><?= $data['harga_barang'] ?></td>
                         <td><?= $data['jumlah_barang'] ?></td>
                         <td>
-                        <a href="edit_data.php & id_barang=<?= $data['id_barang'] ?>" class="btn btn-warning">EDIT</a></center>
-                           <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')" href="hapus_data.php & id_barang=<?= $data['id_barang'] ?>" class="btn btn-danger">HAPUS</a></center>
+                        <a href="edit_data.php?id_barang=<?= $data['id_barang'] ?>" class="btn btn-warning">EDIT</a>
+                        <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')" href="hapus_data.php?id_barang=<?= $data['id_barang'] ?>" class="btn btn-danger">HAPUS</a>
                         </td>
                     </tr>
                 <?php } ?>
