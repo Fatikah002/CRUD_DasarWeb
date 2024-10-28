@@ -17,11 +17,6 @@
                     <h2 class="text-center" style="font-weight:bold;">Form Tambah Data</h2>
 
                     <div class="mb-3">
-                        <label for="id_barang" class="form-label" >ID Barang</label>
-                        <input type="text" class="form-control" id="id_barang" name="id_barang" required>
-                    </div>
-
-                    <div class="mb-3">
                         <label for="gambar_barang" class="form-label">Gambar Barang</label>
                         <input type="file" class="form-control" name="myfile" id="gambar_barang" accept=".jpg, .jpeg, .png, .gif">
                     </div>

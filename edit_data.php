@@ -4,8 +4,8 @@ $id_barang = $_GET['id_barang'];
 
 include 'koneksi.php';
 $sql = "SELECT * FROM daftar_barang WHERE id_barang = '$id_barang'";
-$query = mysqli_query($koneksi, $sql);
-$data = mysqli_fetch_array($query);
+$query = sqlsrv_query($koneksi, $sql);
+$data = sqlsrv_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ $data = mysqli_fetch_array($query);
                     <h2 class="text-center" style="font-weight: bold;">Form Edit Data</h2>
 
                     <label for="id_barang" class="form-label">ID Barang</label>
-                    <input value="<?= htmlspecialchars($data['id_barang']) ?>" readonly type="text" name="id_barang" class="form-control" required><br>
+                    <input value="<?= htmlspecialchars($data['id_barang']) ?>" readonly type="hidden" name="id_barang" class="form-control" required><br>
 
                     <label for="gambar_barang" class="form-label">Gambar Barang</label><br>
                     <?php if (!empty($data['gambar_barang'])): ?>

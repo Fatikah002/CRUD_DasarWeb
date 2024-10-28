@@ -17,9 +17,6 @@ include("koneksi.php");
         style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; background-color: #d03d74;">
         <div class="container">
             <a class="navbar-brand text-white" style="font-size:x-large; font-weight:bold;" href="#">TOKO PALUGADA</a>
-            <a class="bi bi-box-arrow-right text-white" style="text-decoration:none;" href="logout.php">
-                Logout
-            </a>
         </div>
     </nav>
 
@@ -29,7 +26,7 @@ include("koneksi.php");
         <hr>
         <table class="table table-sm table-bordered">
             <thead class="thead table-danger">
-                <a href="tambah_data.php" class="btn btn-dark me-auto ">Tambah Data</a><br>
+                <a href="tambah_data.php" class="btn btn-dark me-auto ">Tambah query</a><br>
                 <tr>
                     <th>ID BARANG</th>
                     <th>GAMBAR BARANG</th>
@@ -52,18 +49,25 @@ include("koneksi.php");
                             kategori_barang.jenis_kategori 
                         FROM daftar_barang 
                         JOIN kategori_barang ON daftar_barang.fk_id_kategori = kategori_barang.id_kategori";
-                $query = mysqli_query($koneksi, $sql);
-                foreach ($query as $data) { ?>
+
+                $data = array();
+                $query = sqlsrv_query($koneksi, $sql);
+                if(!empty($query)) {
+                    while ($row = sqlsrv_fetch_array($query, SQLSRV_FETCH_ASSOC)){
+                        $data[] = $row;
+                    }
+                }
+                foreach ($data as $query) { ?>
                     <tr>
-                        <td><?= $data['id_barang'] ?></td>
-                        <td><img src="img/<?= $data['gambar_barang'] ?>" width="70" height="90" alt="Gambar Produk"></td>
-                        <td><?= $data['nama_barang'] ?></td>
-                        <td><?= $data['jenis_kategori'] ?></td>
-                        <td><?= $data['harga_barang'] ?></td>
-                        <td><?= $data['jumlah_barang'] ?></td>
+                        <td><?= $query['id_barang'] ?></td>
+                        <td><img src="img/<?= $query['gambar_barang'] ?>" width="70" height="90" alt="Gambar Produk"></td>
+                        <td><?= $query['nama_barang'] ?></td>
+                        <td><?= $query['jenis_kategori'] ?></td>
+                        <td><?= $query['harga_barang'] ?></td>
+                        <td><?= $query['jumlah_barang'] ?></td>
                         <td>
-                            <a href="edit_data.php?id_barang=<?= $data['id_barang'] ?>" class="btn btn-warning">EDIT</a>
-                            <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')" href="hapus_data.php?id_barang=<?= $data['id_barang'] ?>" class="btn btn-danger">HAPUS</a>
+                            <a href="edit_data.php?id_barang=<?= $query['id_barang'] ?>" class="btn btn-warning">EDIT</a>
+                            <a onclick="return confirm('Apakah Anda Yakin Ingin Menghapus query?')" href="hapus_data.php?id_barang=<?= $query['id_barang'] ?>" class="btn btn-danger">HAPUS</a>
                         </td>
                     </tr>
                 <?php } ?>

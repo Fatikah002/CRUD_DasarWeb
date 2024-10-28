@@ -31,21 +31,25 @@ if (isset($_POST["submit"])) {
     }
 
     if (empty($gambar_barang)) {
-        $sql = "SELECT gambar_barang FROM daftar_barang WHERE id_barang = '$id_barang'";
-        $result = mysqli_query($koneksi, $sql);
-        $row = mysqli_fetch_assoc($result);
+        $sql = "SELECT gambar_barang FROM daftar_barang WHERE id_barang = ?";
+        $params = array($id_barang);
+        $result = sqlsrv_query($koneksi, $sql, $params);
+        $row = sqlsrv_fetch_array($result);
         $gambar_barang = $row['gambar_barang'];
     }
 
     $sql = "UPDATE daftar_barang SET 
-                nama_barang='$nama_barang', 
-                fk_id_kategori='$fk_id_kategori', 
-                harga_barang='$harga_barang', 
-                jumlah_barang='$jumlah_barang', 
-                gambar_barang='$gambar_barang' 
-            WHERE id_barang='$id_barang'";
+                gambar_barang=?
+                nama_barang=?, 
+                fk_id_kategori=?, 
+                harga_barang=?, 
+                jumlah_barang=?, 
+                 
+            WHERE id_barang=?";
 
-    $query = mysqli_query($koneksi, $sql);
+    $params = array($gambar_barang, $nama_barang, $fk_id_kategori, $harga_barang, $jumlah_barang, $id_barang);
+
+    $query = sqlsrv_query($koneksi, $sql, $params);
     if ($query) {
         header("Location: dashboard.php");
     } else {
