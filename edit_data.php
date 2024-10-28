@@ -1,13 +1,11 @@
 <?php 
 
-$id_barang = $_GET ['id_barang'];
+$id_barang = $_GET['id_barang'];
 
-include'koneksi.php';
-
+include 'koneksi.php';
 $sql = "SELECT * FROM daftar_barang WHERE id_barang = '$id_barang'";
 $query = mysqli_query($koneksi, $sql);
 $data = mysqli_fetch_array($query);
-
 ?>
 
 <!DOCTYPE html>
@@ -19,25 +17,24 @@ $data = mysqli_fetch_array($query);
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-
-    <section id="edit_data" class="pt-5 ">
-        <div class="container mt-5 justify-content-center col-md-4  col-lg-3  justify-content-between card">
-            <div class="mb-3 ">
+<body style=" background-color:#FFF0F5; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';">
+    <section id="edit_data">
+        <div class="container mt-5 justify-content-center col-md-3 col-lg-5">
+            <div class="card mb-5 p-4"> 
                 <form action="proses_edit_data.php" method="post" enctype="multipart/form-data">
-                    <h2 class="text-center">Form Edit Data </h2>
+                    <h2 class="text-center" style="font-weight: bold;">Form Edit Data</h2>
 
                     <label for="id_barang" class="form-label">ID Barang</label>
-                    <input value="<?= $data['id_barang'] ?>" readonly type="text" name="id_barang" class="form-control" required><br>
+                    <input value="<?= htmlspecialchars($data['id_barang']) ?>" readonly type="text" name="id_barang" class="form-control" required><br>
 
-                    <label for="gambar_barang" class="form-label">Gambar Barang</label>
+                    <label for="gambar_barang" class="form-label">Gambar Barang</label><br>
                     <?php if (!empty($data['gambar_barang'])): ?>
-                        <img src="img/<?= $data['gambar_barang'] ?>" alt="Gambar Barang" class="img-thumbnail mb-2" style="max-width: 100%;">
+                        <img src="img/<?= htmlspecialchars($data['gambar_barang']) ?>" alt="Gambar Barang" class="img-thumbnail mb-2" style="max-width: 30%;">
                     <?php endif; ?>
                     <input type="file" name="myfile" class="form-control"><br>
 
                     <label for="nama_barang" class="form-label">Nama Barang</label>
-                    <input value="<?= $data['nama_barang'] ?>" type="text" class="form-control" name="nama_barang" required><br>
+                    <input value="<?= htmlspecialchars($data['nama_barang']) ?>" type="text" class="form-control" name="nama_barang" required><br>
 
                     <label for="kategori_barang" class="form-label">Kategori Barang</label>
                     <select name="fk_id_kategori" class="form-control" required>
@@ -47,18 +44,17 @@ $data = mysqli_fetch_array($query);
                     </select><br>
 
                     <label for="harga_barang" class="form-label">Harga Barang</label>
-                    <input value="<?= $data['harga_barang'] ?>" type="text" class="form-control" name="harga_barang" required><br>
+                    <input value="<?= htmlspecialchars($data['harga_barang']) ?>" type="text" class="form-control" name="harga_barang" required><br>
 
                     <label for="jumlah_barang" class="form-label">Jumlah Barang</label>
-                    <input value="<?= $data['jumlah_barang'] ?>" type="number" class="form-control" name="jumlah_barang" min="0"><br>
-
+                    <input value="<?= htmlspecialchars($data['jumlah_barang']) ?>" type="number" class="form-control" name="jumlah_barang" min="0"><br>
+                    
+                    <a href="dashboard.php" class="btn btn-dark me-auto">Kembali</a>
                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                    <a href="dashboard.php" class="btn btn-primary me-auto">Kembali</a>
+                    
                 </form>
-
             </div>
         </div>
-
     </section>
 </body>
 
