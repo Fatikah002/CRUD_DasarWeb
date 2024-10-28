@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
             if (move_uploaded_file($_FILES["myfile"]["tmp_name"], $targetfile)) {
                 $gambar_barang = $_FILES["myfile"]["name"];
             } else {
-                echo "<script>alert('Gagal mengunggah file.');window.location.assign('dashboard.php');</script>";
+                echo print_r(sqlsrv_errors(), true);
                 exit();
             }
         } else {
@@ -39,11 +39,11 @@ if (isset($_POST["submit"])) {
     }
 
     $sql = "UPDATE daftar_barang SET 
-                gambar_barang=?
+                gambar_barang=?,
                 nama_barang=?, 
                 fk_id_kategori=?, 
                 harga_barang=?, 
-                jumlah_barang=?, 
+                jumlah_barang=? 
                  
             WHERE id_barang=?";
 
@@ -53,6 +53,6 @@ if (isset($_POST["submit"])) {
     if ($query) {
         header("Location: dashboard.php");
     } else {
-        echo "<script>alert('Maaf, data tidak tersimpan');window.location.assign('dashboard.php');</script>";
+        echo print_r(sqlsrv_errors(), true);
     }
 }
