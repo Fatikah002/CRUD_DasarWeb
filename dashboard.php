@@ -17,8 +17,8 @@ include("koneksi.php");
         style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; background-color: #d03d74;">
         <div class="container">
             <a class="navbar-brand text-white" style="font-size:x-large; font-weight:bold;" href="#">TOKO PALUGADA</a>
-            <a  class="bi bi-box-arrow-right text-white" style="text-decoration:none;" href="logout.php">
-                 Logout
+            <a class="bi bi-box-arrow-right text-white" style="text-decoration:none;" href="logout.php">
+                Logout
             </a>
         </div>
     </nav>
@@ -40,17 +40,25 @@ include("koneksi.php");
                     <th>AKSI</th>
                 </tr>
             </thead>
-            <tbody class="tbody table-info"  >
+            <tbody class="tbody table-info">
                 <?php
                 include 'koneksi.php';
-                $sql = "SELECT * FROM daftar_barang";
+                $sql = "SELECT daftar_barang.id_barang, 
+                            daftar_barang.gambar_barang, 
+                            daftar_barang.nama_barang, 
+                            daftar_barang.fk_id_kategori, 
+                            daftar_barang.harga_barang, 
+                            daftar_barang.jumlah_barang, 
+                            kategori_barang.jenis_kategori 
+                        FROM daftar_barang 
+                        JOIN kategori_barang ON daftar_barang.fk_id_kategori = kategori_barang.id_kategori";
                 $query = mysqli_query($koneksi, $sql);
                 foreach ($query as $data) { ?>
                     <tr>
                         <td><?= $data['id_barang'] ?></td>
                         <td><img src="img/<?= $data['gambar_barang'] ?>" width="70" height="90" alt="Gambar Produk"></td>
                         <td><?= $data['nama_barang'] ?></td>
-                        <td><?= $data['fk_id_kategori'] ?></td>
+                        <td><?= $data['jenis_kategori'] ?></td>
                         <td><?= $data['harga_barang'] ?></td>
                         <td><?= $data['jumlah_barang'] ?></td>
                         <td>
