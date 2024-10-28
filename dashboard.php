@@ -44,8 +44,8 @@ require('koneksi.php');
                     <tr>
                         
                         <td><?= $data['id_barang'] ?></td>
-                        <td><?= $data['gambar_barang'] ?></td>
-                       <td><img src="img/<?= $data['gambar_barang'] ?>" width="70" height="90" alt="Gambar Produk"></td> 
+                        <td><img src="img/<?= $data['gambar_barang'] ?>" width="70" height="90" alt="Gambar Produk"></td> 
+                        <td><?= $data['nama_barang'] ?></td>
                         <td><?= $data['fk_id_kategori'] ?></td>
                         <td><?= $data['harga_barang'] ?></td>
                         <td><?= $data['jumlah_barang'] ?></td>
