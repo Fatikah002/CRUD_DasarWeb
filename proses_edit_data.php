@@ -15,8 +15,9 @@ if (isset($_POST["submit"])) {
         $targetfile = $targetdir . basename($_FILES["myfile"]["name"]);
         $fileType = strtolower(pathinfo($targetfile, PATHINFO_EXTENSION));
         $allowedExtensions = array("jpg", "jpeg", "png", "gif");
+        $maxSize = 5 * 1024 * 1024;
 
-        if (in_array($fileType, $allowedExtensions)) {
+        if (in_array($fileType, $allowedExtensions) && $_FILES["myfile"]["size"] <= $maxSize)  {
             if (move_uploaded_file($_FILES["myfile"]["tmp_name"], $targetfile)) {
                 $gambar_barang = $_FILES["myfile"]["name"];
             } else {
@@ -24,7 +25,7 @@ if (isset($_POST["submit"])) {
                 exit();
             }
         } else {
-            echo "<script>alert('File tidak valid.');window.location.assign('dashboard.php');</script>";
+            echo "<script>alert('File tidak valid atau melebihi ukuran maksimum yang diizinkan.');window.location.assign('dashboard.php');</script>";
             exit();
         }
     }

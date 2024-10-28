@@ -31,7 +31,7 @@ $data = mysqli_fetch_array($query);
                     <?php if (!empty($data['gambar_barang'])): ?>
                         <img src="img/<?= htmlspecialchars($data['gambar_barang']) ?>" alt="Gambar Barang" class="img-thumbnail mb-2" style="max-width: 30%;">
                     <?php endif; ?>
-                    <input type="file" name="myfile" class="form-control"><br>
+                    <input type="file" name="myfile" class="form-control" accept=".jpg, .jpeg, .png, .gif"><br>
 
                     <label for="nama_barang" class="form-label">Nama Barang</label>
                     <input value="<?= htmlspecialchars($data['nama_barang']) ?>" type="text" class="form-control" name="nama_barang" required><br>

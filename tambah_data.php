@@ -23,7 +23,7 @@
 
                     <div class="mb-3">
                         <label for="gambar_barang" class="form-label">Gambar Barang</label>
-                        <input type="file" class="form-control" name="myfile" id="gambar_barang">
+                        <input type="file" class="form-control" name="myfile" id="gambar_barang" accept=".jpg, .jpeg, .png, .gif">
                     </div>
 
                     <div class="mb-3">
