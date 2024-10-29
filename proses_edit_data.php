@@ -15,9 +15,8 @@ if (isset($_POST["submit"])) {
         $targetfile = $targetdir . basename($_FILES["myfile"]["name"]);
         $fileType = strtolower(pathinfo($targetfile, PATHINFO_EXTENSION));
         $allowedExtensions = array("jpg", "jpeg", "png", "gif");
-        $maxSize = 5 * 1024 * 1024;
 
-        if (in_array($fileType, $allowedExtensions) && $_FILES["myfile"]["size"] <= $maxSize)  {
+        if (in_array($fileType, $allowedExtensions) && $_FILES["myfile"]["size"] > 0)  {
             if (move_uploaded_file($_FILES["myfile"]["tmp_name"], $targetfile)) {
                 $gambar_barang = $_FILES["myfile"]["name"];
             } else {
