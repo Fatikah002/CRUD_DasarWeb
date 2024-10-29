@@ -26,7 +26,7 @@ include("koneksi.php");
         <hr>
         <table class="table table-sm table-bordered">
             <thead class="thead table-danger">
-                <a href="tambah_data.php" class="btn btn-dark me-auto ">Tambah query</a><br>
+                <a href="tambah_data.php" class="btn btn-dark me-auto ">Tambah Data</a><br>
                 <tr>
                     <th>ID BARANG</th>
                     <th>GAMBAR BARANG</th>
