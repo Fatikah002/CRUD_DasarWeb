@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
                 exit();
             }
         } else {
-            echo "<script>alert('File tidak valid atau melebihi ukuran maksimum yang diizinkan.');window.location.assign('dashboard.php');</script>";
+            echo "<script>alert('File tidak valid yang diizinkan.');window.location.assign('dashboard.php');</script>";
             exit();
         }
     }
